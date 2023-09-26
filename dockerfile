@@ -1,6 +1,7 @@
-FROM node:latest
 
-COPY server.js/* /usr/src/app
-RUN npm install
+FROM node:14-alpine
+WORKDIR /app
+COPY . .
+RUN npm install express stripe dotenv
 EXPOSE 3000
-CMD [ "node","app.js" ]
+CMD ["node", "server.js"]
